@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong's Portfolio Website</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <!-- Update these with your own fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+    <body>
+        <header>
+            <!-- <div class="logo">
+                <img src="img/devjane.png" alt="">
+            </div> -->       
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Project</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Introduction -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hi, I am <strong>Dai Dong</strong>
+            </h1>
+            <!-- <p class="section__subtitle section__subtitle--intro">Aspiring Data Analyst and Data Scientist</p> -->
+            <img src="img/dai_pic.jpg" alt="a picture of me" class="intro__img">
+        </section>
+        
+        
+        <!-- About me -->
+        <section class="about-me" id="about">
+           <h2 class="section__title section__title--about">Who I am</h2>
+           <!-- <p class="section__subtitle section__subtitle--about">A Master's student at University of Wollongong</p> -->
+           <p class="section__subtitle section__subtitle--about"></p>
+           
+           <div class="about-me__body">
+               <p>I was an undergraduate student at <a href="https://miamioh.edu/" target="_blank">Miami University</a> majoring in <b><i>Data Science and Statistics</i></b> and minoring in <b><i>Information Systems</i></b> and <b><i>Actuarial Science</i></b> from August 2017 to May 2021. After graduating, I had an opportunity to work as a Data Scientist at <a href="https://onemount.com/" target="_blank">One Mount Group</a> in Vietnam.</p>
+               <p>Currently, I am in the first year of my <b><i>Master's degree in Computer Science</i></b> at the <a href="https://www.uow.edu.au/" target="_blank">University of Wollongong</a> and expect to graduate on May of 2024.</p>
+           </div>
+           
+           <img src="img/abme.jpeg" alt="about me" class="about-me__img">
+        </section>
+        
+        <!-- My Project -->
+        <section class="my-work" id="work">
+            <h2 class="section__title section__title--work">My Project</h2>
+            <p class="section__subtitle section__subtitle--work">My individual and group projects</p>
+            
+            <div class="portfolio">
+                <!-- Portfolio item 01 -->
+                <a href="daily_death_prediction.html" class="portfolio__item">
+                    <img src="img/covid19.jpeg" alt="" class="portfolio__img"
+                    width="499" height="299">
+                </a>
+                
+                <!-- Portfolio item 02 -->
+                <a href="customer_churn.html" class="portfolio__item">
+                    <img src="img/portfolio_2.jpg" alt="" class="portfolio__img"
+                    width="499" height="299">
+                </a>
+                
+                <!-- Portfolio item 03 -->
+                <a href="ds_job_changes.html" class="portfolio__item">
+                    <img src="img/portfolio_3.jpg" alt="" class="portfolio__img"
+                    width="499" height="299">
+                </a>
+                
+                <!-- Portfolio item 04 -->
+                <a href="dentist.html" class="portfolio__item">
+                    <img src="img/portfolio_4.jpg" alt="" class="portfolio__img"
+                    width="499" height="299">
+                </a>
+                
+                <!-- Portfolio item 05 -->
+                <a href="crickets.html" class="portfolio__item">
+                    <img src="img/portfolio_5.jpg" alt="" class="portfolio__img"
+                    width="499" height="299">
+                </a>
+                </a>
+            </div>
+        </section>
+        
+        
+        <!-- Footer -->
+        <!-- https://fontawesome.com/v4/icon/envelope-open -->
+        <footer class="footer">
+            <!-- replace with your own email address -->
+            <div class="footer__link">Phone Number: (+61) 403-770-879</div>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="mailto:vandaidong@gmail.com">
+                        <i class="fa fa-envelope-open"></i>
+                    </a>
+                </li>
+                <!-- <li class="social-list__item">
+                    <a class="social-list__link" href="mailto:vandaidong@gmail.com">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li> -->
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://github.com/VDai1999">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </footer>
+        
+        
+        <script src="js/index.js"></script>
+        
+    </body>
+</html>
