@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong | Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="../assets/css/project.css">
+
+    </head>
+    <body>
+        <input id="toggle" type="checkbox"></input>
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="nav">
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="../index.html#home">Home</a><br>
+                    <a href="../index.html#about">About</a><br>
+                    <a href="../index.html#projects">Projects</a><br>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="sidenav">
+            <a href="#introduction">Introduction</a>
+            <a href="#method">Methodology</a>
+            <a href="#result">Results</a>
+            <a href="#discussion">Discussions</a>
+        </div>
+
+        <div class="main">
+
+            <section class="intro">
+                <h2 class="section__title section__title--intro">
+                    Cold Stress effects on the Locomotion of Crickets
+                </h2>
+                <h4 class="section__subtitle section__subtitle--intro">Mingshi Cui and Dai Dong</h4>
+            </section>
+
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>The purpose of this research is to learn how cold stress affects the behavior of crickets, in particular, locomotion behavior. It has been argued that locomotion is the root of all complex behavior (Martin 2004), and as such, this study will be helpful in determining the relationship between cold stress and other complex behaviors, such as courtship or competition. We are hypothesizing that cold stress will have a detrimental effect on cricket locomotion.</p>
+            <p>The primary aim of this study is to determine if cold stress has the hypothesized detrimental effect on the four locomotion metrics that were measured (number of events, total distance, total time in motion, and total average speed) for fast events and for slow events. Another aim is an exploration of a hypothesized acclimation period, where a cricket moves more at the beginning of the 10 minutes, and moves less later on, as it has already explored its surroundings.</p>
+            </section>
+
+            <section id="method">
+                <h2>Methodology</h2>
+                <p>As the data consists of multiple observations of the same individuals over different time points, Repeated Measures ANOVAs will be conducted to account for the dependency caused by the related observations, since an individual cricket’s observed movement data is very likely to be highly correlated with its other observed movement data (Weinfurt 2000). This model allowed us to analyze the factors that we were interested in, primarily cold stress level, and how it varies between subjects while accounting for the variability explained by the individual subject. When significant interactions were found, post-hoc testing was performed to determine the difference between the groups. Despite there being a “drop-out” effect in some crickets, due to failure of the tracking software, injuries, etc., we do not expect the inclusion of those observations to influence the results of the study. In all cases, significance is reported at p≤0.05. The aforementioned methods were implemented in R software by using the magrittr, tidyverse, dplyr, ggpubr, rstatix, and emmeans packages.</p>
+
+                <p>In order to investigate the difference among three groups (1-hour cold-stress, 6-hour cold stress, and non-cold-stress) at the beginning and at the end of the 10-minute experience and the difference between cold stressed crickets and controlled crickets, the data will be aggregated by dividing the original data into two intervals (the first 5 minutes and the last 5 minutes) and taking the average value for each individual cricket, retaining the day of the experiment and the stress level. This interval was chosen as we lacked theoretical backing for any other specific interval, it is a natural interpretation of beginning and end, as we are likely to capture most of the “early” period of exploration in the first five minutes, and are very likely to capture the “late” period in the final five minutes, and, as opposed to a scheme like a 3-min beginning, 4-min gap, 3-min end, this scheme uses all the data. In order to discover the relationship between three groups in two different time intervals, two models will be conducted to see if the average of total average speed and the average of the total distance among three groups (1-hour cold stressed, 6-hour cold stressed, and non-controlled group) changes in the span of the first 5 minutes and the last 5 minutes. The average of the total average speed and the average of the total distance are chosen as the response variable for the first and the second model respectively. In both models, the stress level and a variable which is a combination of day and time interval are selected as predictors. Outliers and normality assumptions will be checked before modeling. For models with extreme outliers, we will run them with outliers and without extreme outliers to further investigate the effect of those outliers on modeling. The first model is to determine whether there is a significant interaction between the stress level and the combination of the day and time interval on the average of the total average speed. The second model will be constructed to investigate if the interaction between stress level and the combination of the day and time interval is significant on the average of the total distance. Furthermore, post hoc analyses will be conducted to check how factor predictors affect a response variable which varies between different levels of that variable.</p>
+            </section>
+
+            <section id="result">
+                <h2>Results</h2>
+
+                <p>Before running a total analysis, the underlying assumptions for all of the following rANOVA tests (outliers, normality, and sphericity) were checked. The data looked fairly normal, but there were some outliers. However, because the outliers seemed like legitimate records of just a few unordinary crickets and not errors in the data storage or recording, they were left in the data for the final analysis, though models were run omitting extreme outliers to determine if they did have an extreme effect, which they did not. The sphericity assumption was also reasonably satisfied. Since the assumptions were met, we were able to proceed with the analysis.</p>
+
+                <p>According to Figure 1 and Figure 2, it was shown to be possible that crickets tend to be more active in the first 5 minutes of the experiment than in the last 5 minutes. Models were used to verify the hypothesis. Assumptions were checked before both models were constructed. For the outlier assumptions in both models, there are three extreme outliers that seem to stem from crickets that acted abnormally during the experiment. The normality assumption appears to be reasonably met. Figure 3 and Figure 4 displays the distribution of two response variables by the stress level, day, and time interval. From the two charts, the response variables are skewed right because of some outliers. However, those outliers do not significantly impact the models since two models constructed without extreme outliers show no significant difference from those with outliers.</p>
+
+                <center>
+                    <img src="../img/projects/crickets/pic1.png" alt="The mean of the average of the total average speed by stress level, day, and time interval" >
+                </center>
+
+                <br>
+
+                <center>
+                    <img src="../img/projects/crickets/pic2.png" alt="The mean of the average of the total distance by stress level, day, and time interval" >
+                </center>
+                
+                <br>
+                
+                <center>
+                    <img src="../img/projects/crickets/pic3.png" alt="The distribution of the average of the total average speed by the stress level, day and time interval" >
+                </center>
+
+                <br>
+
+                <center>
+                    <img src="../img/projects/crickets/pic4.png" alt="The distribution of the average of the total distance by the stress level, day, and time interval" >
+                </center>
+                
+                <p>A two-way repeated-measures ANOVA model was constructed to investigate the effect of the stress level and the combination of the day and time interval on the average of the total average speed. The model shows that the effect of the interaction between stress level and the combination of day and time interval on the average of the total average speed was not statistically significant <i>(F = 0.732, df=(10, 316), p-value = 0.694)</i>. However, the effect of the combination of day and time variable did significantly affect the average of the total average speed <i>(F = 10.432, df=(5, 316)</i>, <i>p-value = p&lt0.0001)</i>. Another two-way repeated-measures ANOVA was built to see the impact of the stress level and the combination of day and time interval on the average of the total distance. In this model, the day and time interval combination did still show a significant effect on the average of the total distance <i>(F = 8.908, df=(5, 316), p-value = p<0.0001)</i>. Therefore, 6 different combinations of day and time interval did affect the true average of the total average speed and the true average of the total distance, regardless of the stress levels.</p>
+                
+                <p>A post hoc analysis to determine whether the true average of the total average speed in the first 5 minutes of the experiment is different from the last 5 minutes when analyzing by individual day was constructed. Table 5 shows that there was a significant difference between the first 5 minutes and the last 5 minutes in all 3 days of the experiment. The average of the total average speed in the first 5 minutes of day 2 was 2.14 mm/s faster than the average of the total average speed in the last 5 minutes of day 2. We are 95% confident that the true average speed in the first 5 minutes of day 2 was 0.29 to 3.99 mm/s faster than the average speed in the last 5 minutes of day 2. In general, crickets tended to move faster in the first 5 minutes than in the last 5 minutes. We got similar results when comparing the average of the total distance in the first 5 minutes and the last minutes of the 3 days experiment. From Table 6, crickets traveled farther distances in the first 5 minutes than the last 5 minutes. We are 95% confident that the true average of the total distance that crickets traveled in the first 5 minutes of day 14 was 50.9 to 231 mm longer than the average of the total distance in the last 5 minutes of day 14. According to two posthoc analyses, crickets moved faster and traveled further in the first 5 minutes than in the last 5 minutes when analyzing by day. The other two posthoc analyses were conducted to examine if crickets moved faster and traveled further in the first 5 minutes and the last 5 minutes when aggregating three days. Both tests showed a significant difference between the first 5 minutes and the last 5 minutes of the average of the total average speed and the average of the total distance traveled. Crickets moved 8.18 mm/s faster in the first 5 minutes than the last 5 minutes. We are 95% confident that the true average speed in the first 5 minutes was 5.48 to 10.49 mm/s quicker than the average speed in the last 5 minutes. Furthermore, the first 5 minutes’ distance that crickets traveled was 381 mm further than the last 5 minutes.  There is a 95% chance that the true distance that crickets move in the first 5 minutes was 258 to 505 mm further than the true distance that crickets move in the last 5 minutes of the experiment.</p>
+
+                <center>
+                    <img src="../img/projects/crickets/table1.png" alt="Pairwise comparison of the day and time interval in the average of the total average speed" >
+                </center>
+
+                <br>
+
+                <center>
+                    <img src="../img/projects/crickets/table2.png" alt="Pairwise comparison of the day and time interval in the average of the total distance" >
+                </center>
+                
+            </section>
+
+            <section id="discussion">
+                <h2>Discussions</h2>
+
+                <p>One of the main discussion points to bring ›up in the cold stress analysis is the presence of the outliers. As aforementioned, the analysis was conducted with and without the outliers present in the data and the results were strikingly similar. However, the presence of outliers can affect the average and standard deviation of the measurements. Because of that, with and without the outliers, the standard deviation of the responses was very large and might have contributed to the fact that almost none of the factors or factor interactions were significant except for a couple. A way to combat or correct this, while not being the easiest or most convenient way, would be to conduct a new experiment with larger sample size. This would cut down on the overall effect of the outliers on the rest of the dataset and analysis.</p>
+                <p>This leads to a second discussion point. While the sample size of this experiment was adequate, it allowed for a large standard deviation in a lot of the response measurements. Each group (control, 1 hour cold stressed, and 6 hour cold stressed) only had about 25 or 26 crickets in it and not all of them had data every single day. So, a larger sample size could have cut down on the standard deviation of the measurements and perhaps would have made for a more narrow and effective analysis. While understanding a study like this is very time and money expensive, it is important to realize that just increasing sample size, while creating a more just analysis, does not increase the validity of applying results to crickets worldwide or all of “cricket-kind” if you will.</p>
+            </section>
+
+            <button onclick="window.open('https://github.com/VDai1999/ColdStress')">Link to Github Repository</button>
+
+            <br> <br>
+        </div>
+    </body>
+</html>

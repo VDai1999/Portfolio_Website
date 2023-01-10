@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong | Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="../assets/css/project.css">
+
+    </head>
+    <body>
+        <input id="toggle" type="checkbox"></input>
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="nav">
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="../index.html#home">Home</a><br>
+                    <a href="../index.html#about">About</a><br>
+                    <a href="../index.html#projects">Projects</a><br>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="sidenav">
+            <a href="#introduction">Introduction</a>
+            <a href="#method">Methodology</a>
+            <a href="#result">Results</a>
+            <a href="#discussion">Discussions</a>
+        </div>
+
+        <div class="main">
+
+            <section class="intro">
+                <h2 class="section__title section__title--intro">
+                    Customer Churn Prediction
+                </h2>
+                <h4 class="section__subtitle section__subtitle--intro">Dai Dong</h4>
+            </section>
+
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>Understanding customers’ behavior is one of the most crucial goals of many companies. Nexus Telecommunication Company wants to understand and predict customer churn based on two given data sets. The first data set which is a training set has 3,333 observations, while the other set (test set) has 1667 observations. Both data sets have 20 variables, containing information about customers’ accounts.</p>
+                <p>As mentioned above, the primary aim of this project is to classify if customers will decide to churn or to keep their service with Nexus. Another main purpose is to understand factors that impact customers’ decision to cancel a plan after a month.</p>
+            </section>
+
+            <section id="method">
+                <h2>Methodology</h2>
+                <p>Data cleaning was done to improve the quality of the training set. One of the issues of the data set is the high cardinality of a state variable. There are 51 unique values in the state variable, so a collapsing technique was chosen in order to decrease the number of unique values. We decided to collapse the state level by region. A new data set retrieved from Kaggle, which contains information about the U.S’s regions and states, was introduced to transform 51 levels to only 4 levels. 4 new levels were represented for 4 regions of the United States which are South, West, Midwest, and Northeast.</p>
+                <p>Another issue with the data set is the imbalance between two classes in the binary target. A Synthetic Minority Oversampling Technique or SMOTE was used to oversample the minority class. Before oversampling the minority class, the given train data set was repeatedly and randomly split into new training and validation set for 5 times. In other words, K-fold cross-validation where k=5 was used to evaluate fitted models. Each time a new training and validation set were created from the original train set, the minority class was synthesized using a split training set. Spilt validation sets were not upsampled. Models were constructed based on the upsampled training set and evaluated based on the imbalanced validation set.</p>
+                <p>The chosen response variable is called “churn” which is a binary variable. The dependent variable was coded as “no” (keep using a plan after a month) and “yes” (cancel a plan after a month). Class “yes” was considered as a positive class, while class “no” was viewed as a negative class. Three classification models such as Random Forest, Light GBM, and XGBoost were selected to achieve the main goal of this study. In order to pick the most optimal algorithm among the three, 5-fold cross-validation methods were used as mentioned above. To evaluate the performance of models, the area under the curve (AUC) and the recall score were chosen. A model with a relatively high AUC and a reasonable recall score calculated from the validation set would be selected as the most optimal algorithm to classify the target variable. The default threshold which is 0.5 was adopted to classify class “no” and class “yes”. After picking the most optimal algorithm, hyperparameter tuning, in particular Grid Search, was used to detect the best hyperparameters for the chosen model. The final model would be fitted to the original test set (or the hold-out set) to see how well the chosen model would perform on a “new” data set.</p>
+            </section>
+
+            <section id="result">
+                <h2>Results</h2>
+
+                <p>Figure 1 displays the churn rate between customers who did and did not register for an international plan. The churn percentage of those who registered for an international plan is much higher compared to the rate of those who did not (42.41% versus 11.5%). However, we observe the opposite when looking at customers' status by the voicemail plan. The percentage of customers who registered for a voicemail plan and kept their service is higher than the percentage of those who did not apply for a voicemail plan and kept their service (91.32% versus 83.28%). For numeric variables, their distributions are relatively normal and there are no clear differences in their distribution between the two binary classes.</p>
+
+                <center>
+                    <img src="../img/projects/customer_churn/pic1.png" alt="Status of Customers by International Plan">
+                </center>        
+                <p>One issue related to this data set is the multicollinearity problem. We observed some pairs of variables are highly correlated. For example, the variable that indicates the total call duration in minutes made and received during the daytime has a high correlation with a variable that indicates the total amount of money to be paid for calls during the daytime. We can expect that the total of calling minutes usually impacts the bill that customers have to pay. Therefore, we removed some highly correlated variables to avoid the multicollinearity problem. In total, 5 variables were deleted from the data sets.</p>
+                <p>Another issue is the imbalance between two classes in the target variable with only 14.49% of observations labeled as “yes” and 85.51% labeled as “no”. This issue will impact the performance of the fitted models when applying the fitted models to a newly introduced data set. Synthesized training data sets were generated using a 1-1 ratio between two classes in the target variables.</p>
+                <p>Based on Table 1, the Light GBM model performed the best with the highest average AUC and average recall score. A higher recall score means that it is more likely to correctly classify the positive class which is to correctly identify churn customers. The accuracy of identifying customers who will decide to end their service will be higher.</p>
+                <center>
+                    <img src="../img/projects/customer_churn/table1.png" alt="Average AUC and average recall score of fitted models on validation sets" >
+                </center>
+                
+                <p>After selecting the Light GBM algorithm, we performed model tuning in order to select more appropriate parameters to build a better Light GBM model. However, from Table 2, the base Light GBM model still had the best performance. Even the base model and two models built from the fourth and fifth fold using the cross-validation method have the same average validated AUC score, the average recall score of the base model is still the highest. Therefore, the base model that was trained with a 0.1 learning rate, 100 number of boosted trees to fit, with no limit max tree depth, and 31 number of tree leaves were chosen as the final model.</p>
+                <center>
+                    <img src="../img/projects/customer_churn/table2.png" alt="Average AUC and average recall score of fitted models on validation sets" >
+                </center>
+                
+                <p>We also fitted the final model to the hold-out set and got a 0.91 AUC score and 0.75 recall score. From the Gain chart indicating in Figure 2, if we use the final model to predict the probability that customers will keep or cancel their plan and sort all observations by the probability that the customers will cancel their plan in descending order, we can expect approximately 80% of churning customers to appear in the top 20% of customers. Therefore, if we wanted to find 80% of the churning customers, about 20% of the top-scored customers would have to be identified.</p>
+                <center>
+                    <img src="../img/projects/customer_churn/pic2.png" alt="Cumulative Gain Curve" >
+                </center>
+                
+                <p>We also identified which features are the most important in determining which customers will cancel their plan. According to Figure 3, the total amount of money that customers need to be paid for calls (during the day, evening, night, and abroad trip) and the number of days from registration contributed the most to customers’ decision to keep or cancel their plan.</p>
+
+                <center>
+                    <img src="../img/projects/customer_churn/pic3.png" alt="Features Important" >
+                </center>
+            </section>
+
+            <section id="discussion">
+                <h2>Discussions</h2>
+
+                <p>One discussion point is the method of dealing with an imbalanced data set. Even though SMOTE is one of the most popular methods to deal with the imbalance issue, one problem related to this method is that artificial data will be used to train our models. Furthermore, the proportion between two binary classes in new synthetic data needed to be further investigated. In this project, we naively used a 1-1 ratio; however, further research needs to be done in order to find which ratio is more appropriated.</p>
+                <p>Another approach that can be used to mitigate the imbalanced problem is to apply the undersampling technique which will randomly delete the majority class’s observation. One more alternative method that can be considered is a threshold adjustment approach. Models will be fitted to the imbalanced training set and the most optimal threshold to determine whether or not customers will cancel their service will be selected using the validation set. In this particular project, we need to pick a lower threshold (a new threshold should be less than 0.5). The optimal threshold can be acquired by choosing the threshold that is closest to the top-left of the ROC plot.</p>
+                <p>Model tuning is one of the limitations of this project. We tried to tune hyperparameters with the hope to find a better model than the base model. However, with the limitation in time, we did not have a chance to try a wide range of parameters. With respect to future research, finding more optimal parameters will be one of our main goals.</p>
+            </section>
+
+            <button onclick="window.open('https://github.com/VDai1999/Customer_Churn')">Link to Github Repository</button>
+
+            <br> <br>
+        </div>
+    </body>
+</html>

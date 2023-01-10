@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong | Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="../assets/css/project.css">
+
+    </head>
+    <body>
+        <input id="toggle" type="checkbox"></input>
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="nav">
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="../index.html#home">Home</a><br>
+                    <a href="../index.html#about">About</a><br>
+                    <a href="../index.html#projects">Projects</a><br>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="sidenav">
+            <a href="#introduction">Introduction</a>
+            <a href="#dataSources">Data Sources and Collection</a>
+            <a href="#method">Methodology</a>
+            <a href="#result">Results</a>
+            <a href="#discussion">Discussions</a>
+        </div>
+
+        <div class="main">
+
+            <section class="intro">
+                <h2 class="section__title section__title--intro">
+                    <!-- Predicting the Rate of COVID-19 <br> Daily Deaths in California <br> and Florida -->
+                    Predicting the Rate of COVID-19 Daily Deaths in California and Florida
+                </h2>
+                <h4 class="section__subtitle section__subtitle--intro">Katherine Vorpea and Dai Dong</h4>
+            </section>
+
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>
+                    Coronavirus-19, or COVID-19, has been a global pandemic that has shocked the world for over a year now. Non-essential workers work from home, essential workers risk their lives and go into work, some companies have laid hundreds if not thousands of employees off, businesses shut down, and families and friends have lost many loved ones due to COVID-19. Furthermore, the impact of COVID-19 has been clear-cut for the healthcare industry in the United States and worldwide. Nurses and healthcare workers worldwide risk their lives every day, overworking themselves to try to keep up with the pace of the number of patients in the hospitals, fighting COVID-19, and nurturing patients exposed and sick with COVID-19. According to the CDC website, COVID-19 is transmitted by exposure to infectious respiratory fluids, most commonly by people inhaling very small respiratory droplets. The risk of becoming infected with COVID-19 varies according to the amount of virus to which a person is exposed, distance from the source, and ventilation of the space.
+                </p>
+
+                <p>In the United States, there have been many different reactions, policies, and mandates put in place across the states. Different regions have different levels of shutdowns and policies concerning what action to take to lower the daily death counts of COVID-19. Florida is one of the states that has famously-relaxed mandates concerning COVID-19. Resorts, beaches, and tourist attractions of all varieties have remained open in an effort to maintain the economy and revenue. The news and the media have shown that people continue to travel to Florida in the midst of COVID-19. Consequently, the news has shown a correlation between the increase in visitors with the increase in daily deaths due to COVID-19 in Florida. Moreover, a massive influx of travel to California and the dense population of California has led to a similar increase in the daily deaths due to COVID-19 in California. Therefore, we would like to analyze the daily deaths due to COVID-19 in Florida and Texas.
+                </p>
+
+                <center>
+                    <img src="../img/projects/daily_death_prediction/pic1.png" alt="Trends in California and Florida daily death counts">
+                </center>
+                <br>
+
+                <p>In Figure 1, we see the variations of the daily death count in each state from March 2020 to April 2021 with Florida in black and California in red. The aim of our project is to determine if each state has a stationary time series, and if not, we determine how to transform the data into stationary time series. Then, we fit various ARIMA models, according to what fits each state’s time series the best. Finally, we forecast and predict future daily death counts (the death counts of April 27, 28, 29, and 30th). Since the CDC website has the actual daily death counts for April 27, 28, 29, and 30th, we compare the forecasted results with the actual daily death counts, which reflects how well our models will predict future daily death counts for each state.</p>
+            </section>
+
+            <section id="dataSources">
+                <h2>Data Sources and Collection</h2>
+                <p>Data for the analyses were retrieved from the Center for Disease Control and Prevention (CDC). The most recent records were updated on May 7, 2021. Since the daily death count is not greater than zero until approximately the end of February 2020 for each state, we focus on March 11, 2020 to April 26, 2021 in our report.
+                </p>
+            </section>
+
+            <section id="method">
+                <h2>Methodology</h2>
+                <p>An autoregressive integrated moving average (ARIMA) model is one of the most popular models in time series analysis with the purposes of forecasting future values or understanding the behavior of the data. It is the generalization of an ARMA model and can be used to transform the non-stationary process into the stationary process through differencing (if necessary). An ARIMA model can be used to model non-seasonal time series that is not a random white noise and has patterns. There are three components which are an <i>AR(p)</i>, an <i>I(d)</i>, and an <i>MA(q)</i> process where p is the order of the autoregressive term, d is the degree of differencing to make the process stationary, and q is the order of the moving average term. First, we must create a holdout set in order to test the performance of the ARIMA models before then applying those models to the entire data set. The training set we chose for each state is the data collected from March 11, 2020 to April 19, 2021 and the test set we chose for each state for forecasting is the data collected from April 20, 2021 to April 26, 2021. However, before we find ARIMA models for the data, we perform the Dickey-Fuller test to determine if the training set and test set are stationary. Therefore, if we reject the null hypothesis, then our training set is stationary, and if we fail to reject the null hypothesis, then our training set is not stationary. The threshold we use to reject or fail to reject the null hypothesis test is 0.05.
+                </p>
+            
+                <p>Besides the ARIMA models, we will also consider the exponential smoothing and Holt-Winters (trend component only) models. We only fit additive models because the multiplicative model cannot be used when the original time series has 0 values. Moreover, to aid in the effort of choosing the best models and showing the effectiveness of the performance of the models, we conduct the Ljung-Box Test, check the residual plots, ACF and PACF plots, and perform the unit root test to check stationarity. We also compare RMSE, MAE, and MAPE values to see which model has the smallest values for each, which allows us to determine which model would be the best. For the Ljung-Box Test, if the p-value is really small, we have sufficient evidence to infer that the error terms are uncorrelated, which tells us that the model is not a good model for the data. On the other hand, if the p-value is large, then we do not have significant evidence to infer that the error terms are uncorrelated, which tells us that the model is a good model for the data. For the unit root test, if all coefficient moduli are greater than one, then the lengths of the moduli exceed the radius of the unit circle. This implies that the chosen model is indeed stationary. In addition, the logarithms transformation method is also considered to help stabilize the variance of the series. However, instead of applying the log transformation directly, we do <i>log(x+1)</i> transformation because the original series includes zero values.</p>
+            </section>
+
+            <section id="result">
+                <h2>Results</h2>
+
+                <p>The first step in the process of finding the best models was to create a time series object from the data and create an initial visualization of the data. We created a time series object and initial visualization for the training set and the entire data set. Then, we conducted the Dickey-Fuller test to determine stationarity for the training set. At this juncture, we saw what models are the best fit using the auto.arima() function, analyzing ACF and PACF plots, and using the log transformation method for the training set. Furthermore, we conducted diagnostic checking with the models that have the lowest RMSE, MAE, and MAPE. This important step involves model validation with regression models. Then, we applied these models to the entire data set. Finally, we forecasted using the validated model.</p>
+
+                <h3>Achieving Stationarity</h3>
+                <center>
+                    <img src="../img/projects/daily_death_prediction/pic2.png" alt="ACF plots of the original California and Florida series" >
+                </center>
+                <br>
+                <p>Since models that are non-stationary are not suitable for forecasting processes, we require stationarity. There are several methods to test stationarity. We used the aforementioned Dickey-Fuller test and ACF plots to determine stationarity. From Figure 2, the autocorrelations of California exhibit a slow decay to zero which is an indication of a non-stationary time series. The Dickey-Fuller test performed on the California series also established that the series is not stationary with a high p-value of 0.9899. Therefore, the time series of daily deaths in California had to be differentiated. The <i>auto.arima()</i> function in R was used to detect the correct order of differencing. We used all three criteria which are BIC, AIC, and AICc to select the best differencing for each series. The California time series requires one order of differencing. Moreover, as mentioned above, we also considered the log transformation approach to make the series have a stabilized variance. Observing from Fig. 1, the variance of the California time series increases over time. After taking <i>log(x+1)</i> transformation, the same procedure of investigating ACF plots and conducting the Dickey-Fuller test was applied to select the number of differencing. The log-transformed series of California also needs one differencing.</p>
+
+                <p>From Figure 2, the autocorrelations of Florida exhibit a slow decay to zero which is an indication of a non-stationary time series. The Dickey-Fuller test performed on the Florida series also establishes that the series is not stationary with a high p-value of 0.8975. Therefore, the time series of daily deaths in Florida is differenced. The <i>auto.arima()</i> function in R is used to detect the correct order of differencing. We use three criteria which are BIC, AIC, and AICC to select the best differencing for each series. The Florida time series needs one order of differencing. Moreover, we also consider the log transformation approach to make the series have a stabilized variance. Observing from Figure 1, the variance of the Florida time series increases over time. Utilizing the <i>log(x+1)</i> transformation, the same procedure of investigating ACF plots and we conduct the Dickey-Fuller test applied to select the order of differencing. The log-transformed series of Florida requires one order of differencing.</p>
+
+                <h3>Selecting the Orders and Estimating the Parameters of the <i>ARIMA(p,d,q)</i> Model</h3>
+                <p>To tentatively choose the order of the autoregressive and moving average processes, we analyze the ACF and PACF plots of the data. If the ACF shows a cut-off while the PACF decays slowly, it means that the series is likely to be fitted to a MA model. In contrast, a cut-off in the PACF and a slow decay in the ACF imply that the series has AR characteristics. In general, the p order of the AR term can be determined if we observe a sharp cut-off after lag p in the PACF. Similarly, if the ACF cuts off sharply after lag q, it means that the series can be fitted to a <i>MA(q)</i> model. However, it is more difficult to determine the order of an <i>ARMA(p,q)</i> model since both ACF and PACF display a tail-off behavior.</p>
+                <p>However, with the assistance of <i>auto.arima()</i> function, not only can we determine the order of differencing but we can also estimate the order of the AR and MA terms. After applying the first differencing to the original California time series, an <i>ARIMA(4,1,2)</i> and an <i>ARI(6,1)</i> are the best fit for the data using ACF, PACF, and <i>auto.arima()</i> function. On the other hand, <i>ARIMA(5,1,2)</i> and <i>ARIMA(5,1,3)</i> were selected for the log-transformed series after being differentiated once. Similarly, for the Florida data, with the assistance of <i>auto.arima()</i> function, not only can we determine the order of differencing but we can also estimate the order of the AR and MA terms. After applying the first differencing to the original Florida time series, an <i>ARIMA(2,1,2)</i> and an <i>ARI(6,1)</i> are the best fit for the data using ACF, PACF, and <i>auto.arima()</i>  function. On the other hand, <i>ARIMA(5,1,2)</i> and <i>ARIMA(5,1,5)</i> are selected for the log-transformed series after being differentiated once.</p>
+
+                <h3>Exponential Smoothing and Additive Holt-Winters Models</h3>
+                <p>Besides ARIMA models, exponential smoothing and additive Holt-Winters methods are also considered. Unlike ARIMA models, both exponential smoothing and additive Holt-Winters can be directly constructed using the HoltWinters function without the requirement of investigating ACF and PACF plots. For the characteristics of three selected series, we only fitted the exponential smoothing and additive Holt-Winters model for the trend component only. For fitting the two models, Table 1 exhibits the output of the exponential smoothing and additive Holt-Winters model for the trend component only.</p>
+                
+                <center>
+                    <img src="../img/projects/daily_death_prediction/table1.png" alt="Exponential Smoothing and Holt-Winter for Trend Outputs" >
+                </center>
+
+                <h3>Forecasting COVID-19 Using the Validated Sets</h3>
+                <p>To pick the best model to predict the daily deaths, we use RMSE, MAE, and MAPE calculated based on the validation set as metrics to compare models. However, non-transformed and log-transformed models are not comparable because of the difference in units. Therefore, the best non-transformed and transformed models will be selected to perform diagnostic tests. From Table 2, it appears that <i>ARI(6,1)</i> is the best model to predict the California series because of its lowest tested RMSE, MAE, and MAPE among 4 non-transformed models. Table 3 suggests that <i>ARIMA(5,1,3)</i> is better at forecasting when comparing two transformed models since it also has a lower RMSE, MAE, and MAPE compared to the other model. It can also be observed from Figure 3 and Figure 4. <i>ARI(6,1)</i> and <i>ARIMA(5,1,3)</i> have the best performance on predicting California’s daily deaths. Moreover, from Table 2, it appears that <i>ARI(6,1)</i> or the Exponential Smoothing are the best models among 4 non-transformed models for the Florida series since it has the lowest test RMSE, MAE, and MAPE scores.</p>
+                <p>Furthermore, the log-transformed <i>ARIMA(5,1,5)</i> is a better model compared to the <i>ARIMA(5,1,2)</i> model for the Florida series since it has smaller RMSE, MAE, and MAPE scores. We will further investigate the non-transformed <i>ARI(6,1)</i> and log-transformed <i>ARIMA(5,1,5)</i> models for the Florida series.</p>
+                <center>
+                    <img src="../img/projects/daily_death_prediction/pic3.png" alt="Models Comparison: Forecasted daily deaths" class="../img/portfolio-item-individual">
+                </center>
+                <br>
+                <center>
+                    <img src="../img/projects/daily_death_prediction/pic4.png" alt="Models Comparison: Forecasted daily deaths" >
+                </center>
+                <br>
+                <center>
+                    <img src="../img/projects/daily_death_prediction/table2.png" alt="RMSE, MAE, and MAPE for Fitted Models Using Validation Data" >
+                </center>
+                <br>
+                <center>
+                    <img src="../img/projects/daily_death_prediction/table3.png" alt="RMSE, MAE, and MAPE for Fitted Models Using Validation Data" >
+                </center>
+
+                <h3>Diagnostic Checking and Validating the Model</h3>
+                <p>So far, we have narrowed down our search for the best model by using summary reports including the RMSE, MAE and MAPE values. Now a cross-validation is done to choose the best model. For each state, we check the residuals and run the Ljung-Box test to determine if we have sufficient evidence to infer that the error terms are uncorrelated or correlated. If uncorrelated, we conclude that our models are not a good fit, and if correlated, we conclude that our models are a good fit for the data. This will further narrow down our search for the best model.</p>
+
+                <center>
+                    <img src="../img/projects/daily_death_prediction/pic5.png" alt="Residual and ACF plots for the Florida ARIMA models" >
+                </center>
+                
+                <p>For the California data set, we further investigate the non-transformed <i>ARI(6,1)</i> and log-transformed <i>ARIMA(5,1,3)</i> models. First, we refit the <i>ARI(6,1)</i> model to the whole data set. Figure 5 shows the plot of the residuals and the ACF plot for the <i>ARI(6,1)</i> model. We can see there are some statistically significant correlations. They do not seem to appear due to randomness. The Ljung-Box Test is used to analyze the possible significance of autocorrelation values in the ARI(6,1) model. The ARI(6,1) model gives a chi-squared value of 60.779 with 9 degrees of freedom. The p-value is really small (&lt0.001). This means that we do have sufficient evidence to infer that the error terms are uncorrelated. In other words, the <i>ARI(6,1)</i> model does not seem to be a good model.</p>
+                <p>Second, for the California data set, we further investigate the log-transformed <i>ARIMA(5,1,3)</i> model and refit the <i>ARIMA(5,1,3)</i> model to the whole data set. Figure 5 shows the plot of the residuals and the ACF plot for the <i>ARIMA(5,1,3)</i> model. We can see that there is only 1 significant correlation based on the ACF of residuals plot above and they seem to happen because of randomness. The Ljung-Box Test is used to analyze the possible significance of autocorrelation values in the <i>ARIMA(5,1,3)</i> model. Since the p-value of the Ljung-Box test is large for the first 15 selected lags, we don’t have sufficient evidence to infer that the error terms are uncorrelated. Thus, the log-transformed <i>ARIMA(5,1,3)</i> seems to be a good model.</p>
+
+                <h3>Predictions of Number of Daily Deaths due to COVID-19</h3>
+                <center>
+                    <img src="../img/projects/daily_death_prediction/pic6.png" alt="Time series with the best ARIMA models" >
+                </center>
+                
+                <p>From the left plot of Figure 6, we can see that the predicted values for California follow the general pattern of the series. The estimated daily deaths on April 27, 2021 are about 18 people and increase to about 113 deaths on April 29, 2021. We also checked with the actual data provided by CDC and we can confirm that our predicted values from April 21, 2021 to April 30, 2021 match the general patterns of the series. The actual daily deaths statistics and the forecasted daily deaths of California from April 21, 2021 to April 30, 2021 are provided in Table 4.</p>
+
+                <center>
+                    <img src="../img/projects/daily_death_prediction/table4.png" alt="Forecasted Deaths versus Actual Deaths for California Time Series" >
+                </center>
+                
+                <p>If we compare the forecasted/predicted deaths with the actual deaths, the model does a fairly good job predicting the daily deaths. Therefore, we conclude that this model is a good model to use to predict daily deaths.</p>
+                <p>From Figure 6, we can see that the predicted values for Florida follow the general pattern of the series. The estimated daily deaths on April 27, 2021 are about 57 people and increase to about 75 deaths on April 29, 2021. We also checked with the actual data provided by CDC and we can confirm that our predicted values from April 21, 2021 to April 30, 2021 match the general patterns of the series. The actual daily deaths statistics and the forecasted daily deaths of Florida from April 21, 2021 to April 30, 2021 are provided in Table 5.</p>
+
+                <center>
+                    <img src="../img/projects/daily_death_prediction/table5.png" alt="Forecasted Deaths versus Actual Deaths for Florida Time Series" >
+                </center>
+                
+                <p>If we compare the forecasted/predicted deaths with the actual deaths, the model does a fairly good job predicting the daily deaths. Therefore, we conclude that this model is a good model to use to predict daily deaths.</p>
+            </section>
+
+            <section id="discussion">
+                <h2>Discussions</h2>
+
+                <p>COVID-19 has created a global pandemic that we are still fighting to this day. With the help of vaccines and mandatory mask policies, we hope that this will lead to an end in this tiring battle against COVID-19. In this project, we forecast COVID-19 using the validated models. We use one of the most common models in time series analysis, the autoregressive integrated moving average, or ARIMA, model on the data obtained from the Centers for Disease Control and Prevention. We also determine if the Additive Holt Winters (trend component only) or Additive Exponential Smoothing models fit our data well. Our results show the prediction of COVID-19 daily death counts in Florida and California. Each state, although having similar daily death counts, have different ARIMA models that are good models for the data. We have found that the <i>ARIMA(4,1,2)</i> and an <i>ARI(6,1)</i> are the best fits for the California daily death count data. On the other hand, <i>ARIMA(5,1,2)</i> and <i>ARIMA(5,1,3)</i> are the best fits for the log transformed California daily death count data. We have found the <i>ARIMA(5,1,5)</i> model is the best fit for the log-transformed Florida daily death count daily. However, after doing the diagnostic tests, we narrowed down the final models which are the log-transformed <i>ARIMA(5,1,3)</i> for California series and the log-transformed <i>ARIMA(5,1,5)</i> as the best models to forecast two series. We conclude that the daily death counts in Florida and California will continue to rise and fall as time goes on, hopefully dissipating once everyone has vaccines and builds resistance against COVID-19, and survives.</p>
+
+                <p>Local governments in every state create different mandates and policies in regards to COVID-19 and the distribution of COVID-19 vaccines. Florida has famously relaxed rules and policies about wearing masks in public and other preventative measures to protect people from COVID-19 exposure. Moreover, due to the dense population in California and heavy traffic of international travel, it has been more difficult to enforce COVID-19 policies in that state. The goal of these mandates and the reinforcement of these policies is to prevent people from exposing and being exposed to COVID-19, which will consequently stop the spread of COVID-19, and consequently dissipate the deaths due to COVID-19. We urge the local governments and the House of Representatives and the Senate to reinforce COVID-19 policies to aid in the cause to end COVID-19.</p>
+
+                <h3>Limitations and Future Research</h3>
+                <p>We must make note that COVID-19 data has only been collected over the past year. Therefore, one limitation that this project has is that we do not have enough data to incorporate a seasonal component; so even if there appears to be some sort of cyclical trend to the data, we cannot take that into account when we fit different models to the data with the limited data we have. Although we hope that we do not have to collect data about COVID-19 for much longer, because we hope that the death counts will dissipate, this limits future research because, with this assumption, there will not be much more to analyze or data to add. Therefore, although it is important to analyze COVID-19 data, it is limited in these ways, and future research may confront similar limitations that we encountered.</p>
+            </section>
+
+            <button onclick="window.open('https://github.com/VDai1999/Predict_COVID19_DailyDeaths_in_California')">Link to Github Repository</button>
+
+            <br>
+
+            <p><b>References</b></p>
+            <p>“CDC COVID Data Tracker.” Centers for Disease Control and Prevention, Centers for Disease Control and Prevention, https://covid.cdc.gov/covid-data-tracker/#trends_dailytrendscases.</p>
+        </div>
+    </body>
+</html>

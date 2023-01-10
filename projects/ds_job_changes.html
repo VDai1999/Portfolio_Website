@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong | Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="../assets/css/project.css">
+
+    </head>
+    <body>
+        <input id="toggle" type="checkbox"></input>
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="nav">
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="../index.html#home">Home</a><br>
+                    <a href="../index.html#about">About</a><br>
+                    <a href="../index.html#projects">Projects</a><br>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="sidenav">
+            <a href="#introduction">Introduction</a>
+            <a href="#method">Methodology</a>
+            <a href="#result">Results</a>
+            <a href="#discussion">Discussions</a>
+        </div>
+
+        <div class="main">
+
+            <section class="intro">
+                <h2 class="section__title section__title--intro">
+                    The Analysis of Job Change of Data Scientists
+                </h2>
+                <h4 class="section__subtitle section__subtitle--intro">Dai Dong</h4>
+            </section>
+
+            <section id="introduction">
+                <h2>Introduction</h2>
+                <p>With the rise of Big Data and Data Science, many companies desire to hire data scientists to gain more internal and external insights. A company wants to hire data scientists among a group of people who participate in and pass some courses offered by the company. The chosen data set of the company was retrieved from the Kaggle website which is an online and free community for people who are interested in the data science and machine learning field.</p>
+                <p>The collected data has 19,158 observations and 14 variables. It contains information about demographics (city code, the scaled (candidates’ education level, candidates’ major discipline, etc.), and experience (candidate’s relevant experience, candidates’ total experience in years, etc.). The majority of variables are qualitative variables.</p>
+                <p>The primary aim of the company is to know if candidates really want to work at the company or want to look for new opportunities after joining the training course. The main task is to classify candidates’ decisions (not looking or looking for a new job) after the training program. The information is important for the company because it helps reduce the cost and time as well as enhance the quality of the course. Furthermore, it can assist the company to target the right candidates. Another goal is to determine which features impact candidates' decisions to leave the company which is helpful for the Human Resources department.</p>
+            </section>
+
+            <section id="method">
+                <h2>Methodology</h2>
+                <p>Data cleaning needs to be done in order to increase the quality of the data set before modeling. One issue with the data is the high cardinality of categorical variables. Due to the way that the questionnaire in the signup form was phrased, the experience variable was coded as a qualitative variable with 22 levels. The variable was collapsed to 6 levels by grouping years together. For levels of less than 1 year of experience and more than 20 years of experience, the levels were kept the same. Year 1 to year 20 were divided into 4 different groups so that each group contains 5 years. For example, year 1 to year 5 were collapsed into 1 level, year 6 to year 10 were assigned to another group, etc.</p>
+                <p>Missing values is another problem with this data set. Variables were checked if they are systematically or randomly missing. For values that are missing as a system, a deletion approach was applied. On the other hand, if the values are missing at random, the mice (Multivariate imputation by chained equations) package in R was used to impute missing values. Mice assumes that missing values happen due to randomness and imputes the missing of a particular variable by regressing on other variables. The package uses predictive mean matching for numeric variables, logistic regression for binary variables, Bayesian polytomous regression for factors variables with 2 or more levels, and proportional odds model for ordered factor variables with 2 or more levels.</p>
+                <p>Another issue of the data set is the imbalance proportion between two classes of the response variable. A synthetic data generation approach was used to generate artificial data. ROSE (Random Over-Sampling Examples) package from R was used to shift the bias towards the minority class based on the smoothed bootstrap method. The data set was split into training and validation sets before generating a newly synthetic data set. The newly synthetic data set was created based solely on the training set and was considered as the new training set to fit models. Models created from the synthetic training set were evaluated by the test set.</p>
+                <p>The chosen response variable is called “target” which is a binary variable. The response was coded as 1 (Looking for a job change) and 0 (Not looking for a job change). Class 1 was considered as the positive class, while class 0 was treated as the negative class. Classification models including logistic regression, k-nearest neighbors, random forest, boosted decision tree, linear discriminant analysis, and quadratic discriminant analysis models were used to achieve the main aims of the study. Before fitting classification models, a stepwise logistic regression model was built in order to select the best subset of variables that contribute to labeling the response variable. With the best subset of predictors based on the stepwise logistic regression model, 6 models were constructed to identify whether a candidate decides to stay or leave after the training program. In order to pick optimal models for each statistical method built on the synthetic data set, a 5-fold cross-validation method was used to pick the 6 best models for the 6 statistical methods mentioned above. To evaluate the performance of the 6 chosen models on the real imbalance data, the receiver operating characteristic (ROC) analysis and area under the curve (AUC) metrics were chosen to select the best models. A model with the highest AUC was selected as the final model to classify the target variable. The default threshold which is 0.5 was adopted to classify class 0 and class 1. The aforementioned methods were implemented in the R software by using the ggplot2, tidyverse, caret, mice, VIM, lattice, ROSE, pROC, ROCR, knitr, kableExtra, gridExtra, and gbm.</p>
+            </section>
+
+            <section id="result">
+                <h2>Results</h2>
+
+                <p>Figure 1 depicts the number of missing values of the data set. Based on the plot, company type, company size, and gender are three variables that have the most missing values with more than 20% out of the total records. One particular note is that education university and enrolled level variables have the same number of missing values. After investigation, the result shows that those missing values from both variables come from the same records. Therefore, the deletion approach was chosen because it seems like those values are systematically missing. The total number of observations decreased from 19,158 to 18,722 observations.</p>
+
+                <center>
+                    <img src="../img/projects/ds_job_changes/pic1.png" alt="Number of missing values by variables" >
+                </center>
+                
+                <p>For other variables that have missing values, it seems that they are missing at random because no pattern was detected. With an assumption of having missing values at random, a completed data set was generated using the mice package from R software. Figure 2 is an example of how the frequency of the gender variable changed after imputation. The number of males, females, and others increased by approximately 29.95%, 30.71%, and 0.86% respectively.</p>
+                <p>For other variables that have missing values, it seems that they are missing at random because no pattern was detected. With an assumption of having missing values at random, a completed data set was generated using the mice package from R software. Figure 2 is an example of how the frequency of the gender variable changed after imputation. The number of males, females, and others increased by approximately 29.95%, 30.71%, and 0.86% respectively.</p>
+
+                <center>
+                    <img src="../img/projects/ds_job_changes/pic2.png" alt="Number of observations by gender before and after imputation" >
+                </center>
+                
+                <p>The collected data set has an issue of imbalance with about only 25% of observations labeled as 1 (looking for a new job) and about 75% of observations labeled as 0 (not looking for a new job). The imbalance issue is not extremely severe; however, it can still impact the performance of fitted classification models. The newly synthetic data set was generated on the training set, and the proportion between the two classes was balanced as approximately 49.75% for class 0 and 50.25% for class 1.</p>
+                <p>The stepwise logistic regression model chose city development index, candidates’ relevant experience, current employers’ company type, current employers’ company size, type of university course that candidates enrolled, the number of years between previous and current job, candidates’ total experience in years, candidates’ gender, and training hours completed as variables that contribute the most in labeling candidates’ decision. Table 1 shows the result of AUC, sensitivity, and specificity calculated based on the validation set. Figure 3 displays the ROC curves of the 6 models. From the table and the ROC curve, logistic regression, boosting, and linear discriminant analysis models perform the best and have a similar AUC. However, the logistic regression was chosen as the final model because it is easier to interpret compared to boosting and linear discriminant analysis models. Moreover, since the goal of the study is to correctly detect class 1, higher sensitivity is preferred. The sensitivity for the logistic regression model is the highest. 66.48% sensitivity will correctly identify 66.48% of candidates who decide to look for a new job after joining the training program.</p>
+
+                <center>
+                    <img src="../img/projects/ds_job_changes/table1.png" alt="AUC, sensitivity, and specificity of the predicted models on the validation set" >
+                </center>
+                
+                <br>
+
+                <center>
+                    <img src="../img/projects/ds_job_changes/pic3.png" alt="Receiver operating characteristic curve of 6 models" >
+                </center>
+                
+                <p>For the second goal of the research which is to determine factors that contribute to candidates’ decisions, the boosting model was used. The development index, the completed training hours, the relevant experience, the company type, and the status of university enrollment are factors that significantly drive the candidates’ decisions.</p>
+
+            </section>
+
+            <section id="discussion">
+                <h2>Discussions</h2>
+
+                <p>One of the main discussion points is the method of dealing with an imbalanced data set. Even though synthetic data generation is a popular approach to deal with an imbalance issue, it is sometimes vague to know what proportion between two binary classes of a new synthetic data set should be used. One alternative method that can be considered is to adjust the threshold. The original imbalance data will be split into training and validation sets, and classification models will be directly built on the imbalance training set. The optimal threshold will be chosen using the validation set. In the case of this study, the goal is to lower the threshold (the threshold should be less than 0.5). The optimal threshold can be acquired by choosing the threshold that is closest to the top-left of the ROC plot.</p>
+                <p>Another discussion point is the limitation of model fitting. Some other models in the scope of this class that can be considered are support vector machines with polynomial kernel, support vector machines models with the radial kernel, or support vector classifier models, etc. Because of the limitation of computer resources, those models cannot be fitted in this study. With respect to future research, it would be better to look at different types of models with different tuning parameters.</p>
+            </section>
+
+            <button onclick="window.open('https://github.com/VDai1999/Job-Change-of-Data-Scientists')">Link to Github Repository</button>
+
+            <br>
+            <p><b>References</b></p>
+            <p>Möbius. (2020, December 07). Hr analytics: Job change of data scientists. Retrieved May 08, 2021, from https://www.kaggle.com/arashnic/hr-analytics-job-change-of-data-scientists</p>
+            <p>Wikipedia contributors. (2021, May 7). Receiver operating characteristic. In Wikipedia, The Free Encyclopedia. Retrieved 03:23, May 8, 2021, from https://en.wikipedia.org/w/index.php?title=Receiver_operating_characteristic&oldid=1021978442</p>
+            <p>Analytics VidhyaThis is the official account of the Analytics Vidhya team. (2020, July 05). R packages: Impute missing values in r. Retrieved May 08, 2021, from https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/</p>
+            <p>Analytics VidhyaThis is the official account of the Analytics Vidhya team. (2020, July 05). Imbalanced classification problems in r. Retrieved May 08, 2021, from https://www.analyticsvidhya.com/blog/2016/03/practical-guide-deal-imbalanced-classification-problems/</p>
+        </div>
+    </body>
+</html>

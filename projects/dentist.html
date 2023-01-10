@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong | Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="../assets/css/project.css">
+
+    </head>
+    <body>
+        <input id="toggle" type="checkbox"></input>
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="nav">
+            <div class="nav-wrapper">
+                <nav>
+                    <a href="../index.html#home">Home</a><br>
+                    <a href="../index.html#about">About</a><br>
+                    <a href="../index.html#projects">Projects</a><br>
+                    <a href="../index.html#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="sidenav">
+            <a href="#introduction">Introduction</a>
+            <a href="#method">Methodology</a>
+            <a href="#result">Results</a>
+            <a href="#discussion">Discussions</a>
+        </div>
+
+        <div class="main">
+
+            <section class="intro">
+                <h2 class="section__title section__title--intro">
+                    The Changes in Children’s Dental Habits and Perception Before and After a Reading Curriculum
+                </h2>
+                <h4 class="section__subtitle section__subtitle--intro">Peng Wan and Dai Dong</h4>
+            </section>
+
+            <section id="introduction">
+                <h2>Introduction</h2>
+                The purpose of this experiment is to investigate the changes in children’s oral health habits, dental check-ups, and their feelings about going to the dentist before and after the curriculum intervention. The study was conducted on a pilot study of 316 parents-children who took an online Qualtrics survey before and after exposure to one chapter of the oral health curriculum. In this research, children whose ages were from 9 to 11 years old were chosen. Selected parents and children needed to fill in the pre-survey form which includes general questions and specific questions related to oral health and reading habits. The parents’ pre-survey has 23 questions that focus on their reading preferences, oral health habits, general health status, and educational status. Meanwhile, the children’s pre-survey contains 25 questions about their oral health habits and reading habits. After answering the pre-survey form, both parents and children read an oral health story which is from the Ebook for oral health literacy book. Following reading one chapter of the book, parents and children answered the post-survey form. Both parents and children were required to answer the post-survey. While the children’s post-test contains 14 questions, the parents’ post-survey has 13 questions.
+            </section>
+
+            <section id="method">
+                <h2>Methodology</h2>
+                <p>To address whether there were changes in children’s oral health habits, dental check-ups, and feelings towards going to the dentist, McNemar Test was conducted to compare the change in proportions of the answers that were given, before and after the curriculum. The McNemar test was used to assess if there is a significant change in a categorical response between pre and post-assessment points. While the null hypothesis of this test is that there is no significant change in the proportions, the alternative hypothesis is that there is a significant difference in the proportions. In all cases, significance is reported at ​p​≤0.05. The aforementioned methods were implemented in R software by using the foreign, ggplot2, and tidyverse packages.</p>
+            </section>
+
+            <section id="result">
+                <h2>Results</h2>
+
+                <p>For the first research question about the change in the oral habit before and after the curriculum intervention, the McNemar test could not be applied because of the inconsistency in the Likert scale. For the first pair of the comparison (question 33 and question 57) about children’s habit of brushing teeth twice a day, there were 4 options (“not sure at all”, “not very sure”, “somewhat sure”, and “very sure”) in question 33 versus 3 options (“no”, “maybe”, “yes”) in question 57. From question 33 of the pre-survey, there were only small percentages of children who answered “Not sure at all” and “not very sure” (2.2% and 10.2%, respectively). In total, there were 87.6% of children chose “somewhat sure” and “very sure” (particularly 27.5% and 60.1%). Table 1.1 shows the summary data of question 57 from the post-survey form. From table 1.1, it is clear that children felt the importance of brushing teeth twice a day after the curriculum intervention with more than 90% of respondents selecting the “Yes” option. Even though no conclusion could be drawn from this comparison, a large number of children believed that brushing teeth two times a day is important.</p>
+
+                <center>
+                    <img src="../img/projects/dentist/table1.png" alt="Summary of children’s perspective of brushing teeth twice a day">
+                </center>
+                
+                <p>The second pair of comparisons (question 28 versus question 58) also did not share the same scale. In the pre-survey, children were given 4 choices which were “I never floss my teeth”, “Sometimes I floss my teeth”, “Yes, I floss my teeth with help from a family member”, “Yes, I floss my teeth by myself”. Table 1.2 shows that there were about 15 out of 100 students, on average, who said that they never floss their teeth. Not a large number of children needed help from their families to floss their teeth (32 out of 313 children). The table also shows the opinion of children about flossing their teeth once a day. The percentage of children who agreed that flossing is crucial made up the majority with 81.5% of the sample size. No conclusion was made because the second pair of comparisons was not carried out. However, there were only 5.1% of children who say no to flossing their teeth once a day. This might be a positive indicator that shows a large number of children from the research trust flossing can benefit their dental health.</p>
+
+                <center>
+                    <img src="../img/projects/dentist/table1.png" alt="Summary of children’s perspective of flossing teeth twice a day">
+                </center>
+                
+                <p>Figure 1 and figure 2 show the shift in children’s awareness in dental checkups after the intervention about doing a check-up twice a year (question 44 versus 59) and every 6 months (question 45 versus 60) respectively. From both figure 1 and figure 2, there were similar trends in the answers to both questions. In both questions, while there were decreases in the number of children who answered “No” and “Maybe”, there was an increase in the number of individuals who answered “Yes”. It is possible that the reading intervention held a positive impact on children’s awareness of dental checkups.</p>
+
+                <center>
+                    <img src="../img/projects/dentist/pic1.png" alt="Children’s answers to the question about the importance of going to the dentists twice a year before and after the intervention">
+                </center>
+                
+                <center>
+                    <img src="../img/projects/dentist/pic2.png" alt="Children’s answers to the question about the importance of going to the dentists twice a year before and after the intervention.">
+                </center>
+                
+                <p>To check how the curriculum affects the children’s belief on the dental checkup’s benefit, the McNemar tests were run between two pairs of comparisons. For the test of comparing the perception of the importance of going to the dentists twice a year, the result of the McNemar’s Chi-squared test is <i>χ2(3, N = 313) = 65.925</i>, <i>p&lt0.0001</i>. Since the p-value of the test is less than 0.05, the null hypothesis is rejected. There is sufficient evidence to conclude that there were changes in the dental checkups after the reading session.</p>
+
+                <center>
+                    <img src="../img/projects/dentist/table2_1.png" alt="Summary of children’s belief in the importance of going to the dentist twice a year">
+                </center>
+                
+                <p>For the children who answered “No” before the reading session, 17 individuals changed their opinion to either “Maybe” or “Yes”. About 70.59% of children changed into the option that agrees with the importance of going to the dentist two times a year. For those who were indecisive, 65 of them shifted their opinion after the intervention. Approximately 97.01% of children changed their choice to “Yes”. Besides, for those who said that going to the dentist two times a year is important, only 5 out of 205 children switched their beliefs. 3 children said that they did not believe and 2 others said that they might believe in the effect of going to the dentist twice a year. From the analysis, the curriculum intervention seems to show a positive impact on the children’s perception of the frequency of going to the dentist.</p>
+
+                <center>
+                    <img src="../img/projects/dentist/table2_2.png" alt="Summary of children’s belief in the importance of going to the dentist every six month">
+                </center>
+                
+                <p>The McNemar’s Chi-square test was run to investigate the changes in the belief of going to the dentist every 6 months before and after the intervention showed that <i>χ2(3, N = 313) = 58.576</i>, <i>p&lt0.0001</i>. Because the p-value of the test is less than 0.05, the null hypothesis is rejected. There is enough evidence to conclude that there were changes in the children’s belief of going to the dentist every 6 months after the reading session.</p>
+                <p>There were 13 children who changed their minds after saying “No” in the pre-survey. Approximately 46.15% of those answered “Yes” and 53.85% changed to “Maybe” in the post-survey. For the children who answered “Maybe” before the curriculum intervention, 69 children altered their pick. Around 92.75% of those who changed selected that they did believe in the importance of going to the dentists every six months. Among 208 children who chose “Yes” in the pre-survey form, only 8 adjusted their decision. 6 out of 8 changed to “No” and 2 changed to “Maybe”. From the statistics, there is likely that the reading intervention did have a positive impact on children’s opinion about going to the dentists every 6 months.</p>
+                <p>For the third research question about the feeling toward going to the dentist, the McNemar test could not be applied because of the inconsistency in the Likert scale. In the first comparison pair about the concern toward going to the dentists (question 32 versus question 50), the scales were not the same. The number of options in the pre and post-survey was the same; however, the choices were different. While “No”, “Sometimes”, and “Yes” were choices of question 32, “No”, “Maybe”, and “Yes” were choices of question 50. Furthermore, the expression of the questions was not the same. While question 32 asked about whether children have been afraid of going to the dentist, question 50 asked if children felt nervous going to the dentist after the intervention. Therefore, it is impossible to examine the changes in children’s concerns toward dentists.</p>
+                <p>From Table 3.1, it seems that the answers were spread across three options. About 37.7% of children were sometimes scared of going to the dentist. On the contrary, around 36.4% and 25.9% of children answered “No” and “Yes”, respectively. Table 3.1 also shows the number of respondents and the percentage of respondents who felt nervous about going to the dentist after participating in the reading session. The majority of children answered that they do not feel nervous about going to the dentist as around 73.2% of children picked “No” in the post-survey form.</p>
+
+                <center>
+                    <img src="../img/projects/dentist/table3_1.png" alt="Summary of children’s answer about their fear and anxiety of going to the dentist">
+                </center>
+                
+            </section>
+
+            <section id="discussion">
+                <h2>Discussions</h2>
+
+                <p>Positive results regarding the children’s outlook on oral health following the curriculum intervention were observed throughout the survey questions. For every question asking whether the children believed it was important to complete a certain task, such as brushing their teeth twice a day and the importance of going to the dentist either every 6 months or twice a year, the number of “Yes” answers increased. Additionally, the children who answered “Yes” before the curriculum typically kept their answer the same, and the number of children who changed their answer from a “Yes” to either “Maybe” or “No” was diminutive, further reinforcing the effectiveness of the curriculum. The number of children that remained a “Yes” suggests that the curriculum intervention only tends to point the children in the right direction for oral health. Furthermore, when asked about their fear and anxiety of going to the dentist, the number of children that were anxious about going to the dentist prior had decreased following the curriculum intervention, and the children that were not anxious to begin with typically remained that way.</p>
+                <p>The nature of the study allowed the group to take a straightforward approach where only the proportion of answers were compared, and conclusions were simply drawn from the output of the two statistical tests run. To reiterate, the change in the number of children answering “Yes” about the importance of the previously mentioned survey questions was found to be statistically significant, affirming the effectiveness of the oral health curriculum.</p>
+                <p>In order to make a thorough comparison as well as more certain conclusions, an adjustment in future survey item construction is suggested. In the current method, the questions asked in the pre and post-survey were worded differently or they used ununiformed scales. Therefore, it is recommended that the questions from the pre-survey should be utilized in the post-survey form. This makes the comparison between the pre and post-survey reasonable. An adjustment in future survey item construction is suggested. In the current method, the questions asked in the pre and post-survey were worded differently or they used ununiformed scales. Therefore, it is recommended that the questions from the pre-survey should be utilized in the post-survey form. This makes the comparison between the pre and post-survey reasonable.</p>
+            </section>
+        </div>
+    </body>
+</html>
