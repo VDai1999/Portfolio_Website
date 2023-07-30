@@ -138,6 +138,10 @@ section h2{
     cursor:pointer
 }
 
+.button:visited {
+    color: #FFF;
+}
+
 @media (max-width: 767px){
     .button{
         font-size:18px
@@ -185,7 +189,8 @@ header .container nav{
     display:-ms-grid;
     display:grid;
     grid-gap:16px;
-    -ms-grid-columns:(auto)[4];grid-template-columns:repeat(4, auto)
+    /* -ms-grid-columns:(auto)[4]; */
+    grid-template-columns:repeat(4, auto)
 }
 
 @media (max-width: 767px){
