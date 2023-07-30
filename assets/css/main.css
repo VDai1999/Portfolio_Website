@@ -288,14 +288,16 @@ main .projects{
 main .projects .projects-grid{
     display:-ms-grid;
     display:grid;
-    -ms-grid-columns:(1fr)[3];grid-template-columns:repeat(3, 1fr);
+    /* -ms-grid-columns:(1fr)[3]; */
+    grid-template-columns:repeat(3, 1fr);
     grid-gap:16px;
     margin-bottom:32px;
 }
 
 @media (max-width: 768px){
     main .projects .projects-grid{
-        -ms-grid-columns:(1fr)[2];grid-template-columns:repeat(2, 1fr);
+        /* -ms-grid-columns:(1fr)[2]; */
+        grid-template-columns:repeat(2, 1fr);
     }
 }
 
@@ -312,27 +314,32 @@ main .projects .projects-grid{
 } */
 
 main .projects .projects-grid .project1{
-    background-image:url("../../img/front_page/covid19.jpeg");border-radius:16px;
-    overflow:hidden
+    background-image:url("../../img/front_page/covid19.jpeg");
+    border-radius:16px;
+    overflow:hidden;
 }
 
 main .projects .projects-grid .project2{
-    background-image:url("../../img/front_page/portfolio_2.jpg");border-radius:16px;
+    background-image:url("../../img/front_page/portfolio_2.jpg");
+    border-radius:16px;
     overflow:hidden
 }
 
 main .projects .projects-grid .project3{
-    background-image:url("../../img/front_page/portfolio_3.jpg");border-radius:16px;
+    background-image:url("../../img/front_page/portfolio_3.jpg");
+    border-radius:16px;
     overflow:hidden
 }
 
 main .projects .projects-grid .project4{
-    background-image:url("../../img/front_page/portfolio_4.jpg");border-radius:16px;
+    background-image:url("../../img/front_page/portfolio_4.jpg");
+    border-radius:16px;
     overflow:hidden
 }
 
 main .projects .projects-grid .project5{
-    background-image:url("../../img/front_page/portfolio_5.jpg");border-radius:16px;
+    background-image:url("../../img/front_page/portfolio_5.jpg");
+    border-radius:16px;
     overflow:hidden
 }
 
@@ -340,13 +347,15 @@ main .projects .projects-grid .project .content{
     opacity:0;
     color:#FFF;
     padding:16px;
-    background-color:rgba(64,39,68,0.8);-webkit-transition:0.4s;
-    transition:0.4s
+    background-color:rgba(64,39,68,0.8);
+    -webkit-transition:0.4s;
+    transition:0.4s;
+    background-size: cover;
 }
 
 main .projects .projects-grid .project .content h3{
     font-size:32px;
-    margin-bottom:16px
+    margin-bottom:16px;
 }
 
 @media (max-width: 1024px){
@@ -398,7 +407,9 @@ main .contact .container form .form-grid{
     display:-ms-grid;
     display:grid;
     grid-gap:16px;
-    -ms-grid-columns:(1fr)[2];grid-template-columns:repeat(2, 1fr);margin-bottom:16px
+    /* -ms-grid-columns:(1fr)[2]; */
+    grid-template-columns:repeat(2, 1fr);
+    margin-bottom:16px
 }
 
 @media (max-width: 767px){
