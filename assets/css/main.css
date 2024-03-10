@@ -322,30 +322,35 @@ main .projects .projects-grid .project1{
     background-image:url("../../img/front_page/covid19.jpeg");
     border-radius:16px;
     overflow:hidden;
+    height: 300px;
 }
 
 main .projects .projects-grid .project2{
     background-image:url("../../img/front_page/portfolio_2.jpg");
     border-radius:16px;
-    overflow:hidden
+    overflow:hidden;
+    height: 300px;
 }
 
 main .projects .projects-grid .project3{
     background-image:url("../../img/front_page/portfolio_3.jpg");
     border-radius:16px;
-    overflow:hidden
+    overflow:hidden;
+    height: 300px;
 }
 
 main .projects .projects-grid .project4{
     background-image:url("../../img/front_page/portfolio_4.jpg");
     border-radius:16px;
-    overflow:hidden
+    overflow:hidden;
+    height: 300px;
 }
 
 main .projects .projects-grid .project5{
     background-image:url("../../img/front_page/portfolio_5.jpg");
     border-radius:16px;
-    overflow:hidden
+    overflow:hidden;
+    height: 300px;
 }
 
 main .projects .projects-grid .project .content{
@@ -355,7 +360,8 @@ main .projects .projects-grid .project .content{
     background-color:rgba(64,39,68,0.8);
     -webkit-transition:0.4s;
     transition:0.4s;
-    background-size: cover;
+    /* background-size: contain; */
+    background-size: 100% 100%;
 }
 
 main .projects .projects-grid .project .content h3{

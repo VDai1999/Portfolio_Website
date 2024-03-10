@@ -64,16 +64,19 @@ Nav Styles
   transition: all 0.3s ease-in-out;
   transform: scale(0);
 }
+
 .nav-wrapper {
   position: relative;
   overflow: hidden;
   overflow-y: auto;
   height: 100%;
 }
+
 nav {
   text-align: left;
   margin-left: 25%;
 }
+
 nav a {
   position: relative;
   text-decoration: none;
@@ -86,6 +89,7 @@ nav a {
   transition: color 0.2s ease-in-out;
   letter-spacing: 1px;
 }
+
 nav a:before {
   content: '';
   height: 0;
@@ -95,9 +99,11 @@ nav a:before {
   left: -0.5em;
   transition: all 0.2s ease-in-out;
 }
+
 nav a:hover {
   color: white;
 }
+
 nav a:hover:before {
   height: 100%;
 }
@@ -109,6 +115,7 @@ Animations
   transform: rotate(-45deg);
   margin-top: 25px;
 }
+
 #toggle:checked + .hamburger .bottom-bun {
   opacity: 0;
   transform: rotate(45deg);
@@ -133,32 +140,32 @@ Animations
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
-  }
+}
   
-  .sidenav a {
-    padding: 6px 6px 6px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
   
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-  .main {
-    margin-left: 200px; 
-    /* Same as the width of the sidenav */
-    margin-left: 250px;
-    margin-top: 150px;
-    margin-right: 150px;
-  }
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; 
+  /* Same as the width of the sidenav */
+  margin-left: 250px;
+  margin-top: 150px;
+  margin-right: 150px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
 
 img {
     height: 500px;
