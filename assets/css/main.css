@@ -353,6 +353,20 @@ main .projects .projects-grid .project5{
     height: 300px;
 }
 
+main .projects .projects-grid .project6{
+    background-image:url("../../img/front_page/portfolio_6.png");
+    border-radius:16px;
+    overflow:hidden;
+    height: 300px;
+}
+
+main .projects .projects-grid .project7{
+    background-image:url("../../img/front_page/portfolio_7.jpg");
+    border-radius:16px;
+    overflow:hidden;
+    height: 300px;
+}
+
 main .projects .projects-grid .project .content{
     opacity:0;
     color:#FFF;
@@ -387,7 +401,8 @@ main .projects .projects-grid .project .content p{
 }
 
 main .projects .projects-grid .project:hover .content{
-    opacity:1
+    opacity:1;
+    height: 300px;
 }
 
 main .projects .center{

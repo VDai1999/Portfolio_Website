@@ -199,3 +199,7 @@ img {
     /* font-family: var(--ff-secondary); */
     margin-bottom: 1em;
 }
+
+a:visited{
+  color:blue;
+}

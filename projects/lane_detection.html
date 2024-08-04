@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dai Dong | Projects</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
+        
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Slab:400,700&display=swap" rel="stylesheet"> 
+        
+        <link rel="stylesheet" href="../assets/css/project.css">
+</head>
+<body>
+    <input id="toggle" type="checkbox"></input>
+
+    <label for="toggle" class="hamburger">
+        <div class="top-bun"></div>
+        <div class="meat"></div>
+        <div class="bottom-bun"></div>
+    </label>
+
+    <div class="nav">
+        <div class="nav-wrapper">
+            <nav>
+                <a href="../index.html#home">Home</a><br>
+                <a href="../index.html#about">About</a><br>
+                <a href="../index.html#projects">Projects</a><br>
+                <a href="../resume/index.html">Resume</a><br>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <section class="intro">
+            <h2 class="section__title section__title--intro">
+                Lane Detection Cross-Platform Mobile Application
+            </h2>
+            <h4 class="section__subtitle section__subtitle--intro">Dai Dong, Nadia, Rodrigo, Sabbir, Sami, Shahzeb</h4>
+        </section>
+
+        <h2>About the Project</h2>
+        In recent years, the advent of Artificial Intelligence has spurred the creation of various
+        new technologies, one of which is the autonomous driving system. Among the focal areas
+        of research, lane detection (also known as road mark detection) has garnered significant
+        attention due to the advantages it offers to both human drivers and autonomous systems.
+        These benefits include improved safety, driving comfort, and the overall efficiency of transportation systems. Nevertheless, present algorithms encounter difficulties when confronted
+        with adverse conditions such as extreme lighting, low-visibility weather, and obscured lane
+        markings. Therefore, the need to continuously develop and evaluate lane detection algorithms is necessary. To evaluate the performance of a lane detection algorithm under
+        varying road conditions in practical settings, we need to utilise the front-facing cameras installed in vehicles equipped with lane detection technology. However, this method is both
+        time-consuming and expensive, particularly for students. To tackle this issue, we propose
+        a lane detection mobile app designed as an educational resource. This app offers learners a
+        budget-friendly and efficient means to experiment with different lane detection algorithms.
+        Compatible with various platforms, our mobile app currently enables users to capture images and select their preferred models to experiment with. The captured image will be sent
+        to the server for processing and obtaining a detection result. Subsequently, the output image
+        will be sent back to the phone for users to view. To fully utilise all functionalities of our lane
+        detection mobile application, a strong network connection is recommended to expedite the
+        request and retrieval tasks. Our app currently offers two lane detection models integrated
+        into our system: YOLOP and YOLOPv2, as well as one drivable road region detection
+        model, U-Net. In addition to the mobile application, we have trained several deep learning
+        models, including three PSPNet models, each with a different backbone, for detecting lane
+        marks, and one U-Net model for detecting drivable lane regions. The PSPNet-ResNet34
+        achieved an F1 score of 0.72 on the VIL-100 test dataset for the road mark detection task,
+        while the U-Net model achieved an 86.18% pixel accuracy score on the KITTI test dataset.
+        
+        <h2>About My Task</h2>
+        In this project, I was the team leader. My responsibilities included coordinating team meetings and meetings with our supervisor. I was also in charge of training deep learning models for a mobile application designed to detect lanes. Additionally, I was responsible for refining the final group report and delivering the group presentation.
+
+        <h2>Demo Video</h2>
+        <video width="480" height="360" controls>
+            <source src="../video/app-demo.mp4" type="video/mp4">
+            <!-- <source src="movie.ogg" type="video/ogg"> -->
+          Your browser does not support the video tag.
+        </video>
+
+        <h2>Project Materials</h2>
+        <ol>
+            <li><a href="https://github.com/KNrodrigo/LaneD-Models-App/tree/fix_readmes?tab=readme-ov-file" target="_blank">Github</a></li>
+            <li><a href="https://drive.google.com/file/d/1Kv3ovMUfSsZwC1ojm9QMkqsfVMIjbfN3/view?usp=sharing" target="_blank">Project report</a></li>
+            <!-- <li><a href="https://drive.google.com/file/d/1PyuEho1nOa_qDkBJx416ubr5OlMSHwVu/view?usp=sharing" target="_blank">Demo video</a></li> -->
+        </ol>
+
+    </div>
+
+</body>
+</html>
